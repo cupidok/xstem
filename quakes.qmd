@@ -1,0 +1,87 @@
+---
+title: "Earthquake Data"
+execute: 
+  echo: true
+format:
+    html:
+        code-fold: true
+        toc: false
+        mathjax: "local"
+filters:
+  - webr
+webr:
+  packages: []
+smaller: false
+---
+
+
+
+```{webr-r}
+#| context: setup
+#| autorun: true
+
+library(dplyr)
+
+data(quakes)
+
+attach(quakes)
+  
+```
+
+
+```{r, include=F}
+
+library(dplyr)
+
+data(quakes)
+
+```
+
+The following dataset contains the locations of 1000 earthquakes that occurred near Fiji since 1964.
+
+- `lat`: Latitude of the earthquake.
+- `long`: Longitude of the earthquake.
+- `depth`: Vertical distance (km) of the earthquake from the earth's surface where the fault ruptured.
+- `mag`: Richter magnitude of the earthquake.
+- `stations`: Number of stations reporting the earthquake.
+
+The data can be found in the following table:
+
+```{r, echo=F}
+library(DT)
+
+datatable(quakes, 
+          options = list(pageLength = 15),
+          filter = "bottom") 
+```
+
+###
+
+Use the following box to run code to answer your questions about the babyname dataset.
+
+
+```{webr-r}
+#| autorun: false
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+

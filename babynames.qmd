@@ -1,0 +1,92 @@
+---
+title: "Baby Names Data"
+execute: 
+  echo: true
+format:
+    html:
+        code-fold: true
+        toc: false
+        mathjax: "local"
+filters:
+  - webr
+webr:
+  packages: ["babynames"]
+smaller: false
+---
+
+
+
+```{webr-r}
+#| context: setup
+#| autorun: true
+
+library(dplyr)
+library(babynames)
+
+babynames<-babynames |> 
+  filter(year == 2010 & n > 1000) |> 
+  select(sex, name, n)  |> 
+  arrange(name)
+  
+attach(babynames)
+```
+
+
+```{r, include=F}
+
+library(dplyr)
+library(babynames)
+
+babynames<-babynames |> 
+  filter(year == 2010 & n > 1000) |> 
+  select(sex, name, n) |> 
+  arrange(name)
+
+```
+
+The following dataset contains the names that were given to at least 1000 babies in the United States in the year 2010.
+
+- `sex`: The sex of the baby.
+- `name`: The baby name.
+- `n`: The number of babies that were given that name.
+
+The data can be found in the following table:
+
+```{r, echo=F}
+library(DT)
+
+datatable(babynames, 
+          options = list(pageLength = 15),
+          filter = "bottom") 
+```
+
+###
+
+Use the following box to run code to answer your questions about the babyname dataset.
+
+
+```{webr-r}
+#| autorun: false
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+

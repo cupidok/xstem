@@ -1,0 +1,97 @@
+---
+title: "Pixar Movie Data"
+execute: 
+  echo: true
+format:
+    html:
+        code-fold: true
+        toc: false
+        mathjax: "local"
+filters:
+  - webr
+webr:
+  packages: ["pixarfilms"]
+smaller: false
+---
+
+
+
+```{webr-r}
+#| context: setup
+#| autorun: true
+
+library(dplyr)
+library(pixarfilms)
+
+pixar<-pixar_films |> 
+  full_join(box_office,by="film") |> 
+  full_join(public_response,by="film") |> 
+  select(film, release_date, run_time, rotten_tomatoes, box_office_worldwide,  budget ) |> 
+  na.omit()
+  
+attach(pixar)
+```
+
+
+```{r, include=F}
+
+library(pixarfilms)
+library(dplyr)
+
+
+pixar<-pixar_films |> 
+  full_join(box_office,by="film") |> 
+  full_join(public_response,by="film") |> 
+  select(film, release_date, run_time, rotten_tomatoes, box_office_worldwide,  budget ) |> 
+  na.omit()
+
+```
+
+The data we will be looking at contains information about Pixar films released prior to 2021, as provided by Wikipedia. The following variables were collected for each film:
+
+- `film`: The name of the film.
+- `release_date`: The date the film premiered.
+- `run_time`: The length of the film in minutes.
+- `rotten_tomatoes`: Score from the review-aggregation website Rotten Tomatoes; scored out of 100.
+- `box_office_worldwide`: Box office gross amount in U.S. dollars worldwide.
+- `budget`: Movie budget in U.S. dollars.
+
+The data can be found in the following table:
+
+```{r, echo=F}
+library(DT)
+
+datatable(pixar, 
+          options = list(pageLength = 10), filter = "bottom") 
+```
+
+###
+
+Use the following box to run code to answer your questions about the pixar dataset.
+
+
+```{webr-r}
+#| autorun: false
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+

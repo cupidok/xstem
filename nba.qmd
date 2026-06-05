@@ -1,0 +1,93 @@
+---
+title: "NBA Player Data"
+execute: 
+  echo: true
+format:
+    html:
+        code-fold: true
+        toc: false
+        mathjax: "local"
+filters:
+  - webr
+webr:
+  packages: []
+smaller: false
+---
+
+
+
+```{webr-r}
+#| context: setup
+#| autorun: true
+
+library(openintro)
+library(dplyr)
+
+data(nba_players_19)
+players<-nba_players_19[,-4]
+colnames(players)<- c("First","Last","Team","Position","Number","Height")
+players$Height<-round(players$Height*2.54)
+attach(players)
+  
+```
+
+
+```{r, include=F}
+
+library(openintro)
+library(dplyr)
+
+data(nba_players_19)
+players<-nba_players_19[,-4]
+players$height<-round(players$height*2.54)
+```
+
+The following dataset contains information about the 494 basketball players that played in the NBA during the 2018-2019 season.
+
+- `first_name`: First name.
+- `last_name`: Last name.
+- `team`: Team the player is on.
+- `position`: Player position.
+- `number`: Jersey number.
+- `height`: Height, in cm.
+
+The data can be found in the following table:
+
+```{r, echo=F}
+library(DT)
+
+datatable(players, 
+          options = list(pageLength = 15),
+          filter  = "bottom") 
+```
+
+###
+
+Use the following box to run code to answer your questions about the babyname dataset.
+
+
+```{webr-r}
+#| autorun: false
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+

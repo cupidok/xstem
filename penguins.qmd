@@ -1,0 +1,90 @@
+---
+title: "Penguins Data"
+execute: 
+  echo: true
+format:
+    html:
+        code-fold: true
+        toc: false
+        mathjax: "local"
+filters:
+  - webr
+webr:
+  packages: ["palmerpenguins"]
+smaller: false
+---
+
+
+
+```{webr-r}
+#| context: setup
+#| autorun: true
+
+library(dplyr)
+library(palmerpenguins)
+
+penguins <- penguins |> 
+  select(species, island, bill_length_mm, flipper_length_mm, body_mass_g, sex) |> na.omit()
+  
+attach(penguins)
+```
+
+
+```{r, include=F}
+
+library(dplyr)
+library(palmerpenguins)
+
+penguins <- penguins |> 
+  select(species, island, bill_length_mm, flipper_length_mm, body_mass_g, sex) |> na.omit()
+```
+
+This data set contains measurements for penguins found in Antarctica's Palmer Archipelago.
+
+- `species`: Penguin species.
+- `island`: Which island the penguin was found on.
+- `bill_length_mm`: How long the penguin's bill is (in mm).
+- `flipper_length_mm`: How long the penguin's flipper is (in mm).
+- `body_mass_g`: How much the penguin weighs (in g).
+- `sex`: The sex of the penguin.
+
+The data can be found in the following table:
+
+```{r, echo=F}
+library(DT)
+
+datatable(penguins, 
+          options = list(pageLength = 15),
+          filter = "bottom") 
+```
+
+###
+
+Use the following box to run code to answer your questions about the babyname dataset.
+
+
+```{webr-r}
+#| autorun: false
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
